@@ -1,4 +1,7 @@
 create or replace package body tim as
+ --
+ -- Version 0.2
+ --
 
     function s_ago(dt date) return number is -- {
     begin
@@ -19,6 +22,22 @@ create or replace package body tim as
              extract( day    from int ) * 60 * 60 * 24;
 
     end to_s; -- }
+
+    function iso_8601(dt date) return varchar2 is -- {
+    begin
+        return to_char(dt,'YYYY-MM-DD"T"HH24:MI:SS"Z"');
+    end iso_8601; -- }
+
+    function iso_8601(ts timestamp) return varchar2 is -- {
+    begin
+        return to_char(ts,'YYYY-MM-DD"T"HH24:MI:SS.FF3"Z"');
+
+    end iso_8601; -- }
+
+    function iso_8601(ts timestamp with time zone) return varchar2 is -- {
+    begin
+        return to_char(ts,'YYYY-MM-DD"T"HH24:MI:SS.FF3TZR');
+    end iso_8601; -- }
 
 end tim;
 /
