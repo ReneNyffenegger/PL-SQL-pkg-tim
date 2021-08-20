@@ -1,6 +1,6 @@
 create or replace package body tim as
  --
- -- Version 0.3
+ -- Version 0.4
  --
 
     function s_ago(dt date) return number is -- {
@@ -39,10 +39,10 @@ create or replace package body tim as
         return to_char(ts,'YYYY-MM-DD"T"HH24:MI:SS.FF3TZR');
     end iso_8601; -- }
 
-    function rfc_3999_sec(dt date) return varchar2 is
+    function rfc_3339_sec(dt date) return varchar2 is
     begin
         return to_char(dt,'YYYY-MM-DD HH24:MI:SS');
-    end rfc_3999_sec; -- }
+    end rfc_3339_sec; -- }
 
 end tim;
 /
